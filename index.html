@@ -1,0 +1,3624 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurnal Ramadhan 5A MIN 2 Lamongan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
+            background: linear-gradient(135deg, #006994 0%, #003d5c 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animasi Background Laut */
+        .ocean {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(to bottom, #006994 0%, #003d5c 100%);
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: rise 10s infinite ease-in;
+        }
+
+        @keyframes rise {
+            0% { bottom: -100px; transform: translateX(0); }
+            50% { transform: translateX(100px); }
+            100% { bottom: 1080px; transform: translateX(-200px); }
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%23ffffff" fill-opacity="0.1"></path></svg>');
+            background-size: 1200px 100px;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { background-position-x: 0; }
+            100% { background-position-x: 1200px; }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Connection Status */
+        .connection-status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .connection-status.online {
+            background: rgba(100, 255, 100, 0.2);
+            border: 2px solid rgba(100, 255, 100, 0.5);
+            color: #64ff64;
+        }
+
+        .connection-status.offline {
+            background: rgba(255, 100, 100, 0.2);
+            border: 2px solid rgba(255, 100, 100, 0.5);
+            color: #ff6464;
+            animation: pulse 2s infinite;
+        }
+
+        .connection-status.connecting {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            color: #ffd700;
+        }
+
+        .connection-status.error {
+            background: rgba(255, 100, 100, 0.3);
+            border: 2px solid rgba(255, 100, 100, 0.6);
+            color: #ff9999;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Version Badge */
+        .version-badge {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Login Page */
+        .login-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            max-width: 500px;
+            width: 90%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .school-logo {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .passcode-display {
+            background: rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 215, 0, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .passcode-digit {
+            width: 50px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #003d5c;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: popIn 0.3s ease;
+            font-family: 'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
+            line-height: 1;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .passcode-digit.empty {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        .student-preview {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .student-preview.active {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #ffd700;
+            border-style: solid;
+        }
+
+        .preview-emoji {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .preview-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .preview-hint {
+            opacity: 0.7;
+            font-size: 1rem;
+        }
+
+        .numpad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .num-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .num-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .num-btn:active {
+            transform: scale(0.95);
+        }
+
+        .num-btn.clear {
+            background: rgba(255, 100, 100, 0.3);
+            border-color: rgba(255, 100, 100, 0.5);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ffd700, #ffaa00);
+            color: #003d5c;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            font-family: 'Nunito', sans-serif;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Lobby Page */
+        .lobby-page {
+            display: none;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar {
+            font-size: 3rem;
+            background: rgba(255, 255, 255, 0.2);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            line-height: 1;
+        }
+
+        .user-details h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .user-details p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Notification Bell */
+        .notification-bell {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .notification-bell:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .notification-bell.has-new {
+            animation: bellRing 2s infinite;
+            background: rgba(255, 215, 0, 0.3);
+            border-color: #ffd700;
+        }
+
+        @keyframes bellRing {
+            0%, 100% { transform: rotate(0deg); }
+            10% { transform: rotate(10deg); }
+            20% { transform: rotate(-10deg); }
+            30% { transform: rotate(10deg); }
+            40% { transform: rotate(-10deg); }
+            50% { transform: rotate(0deg); }
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff6b6b;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .level-badge {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* KOMPAK MESSAGE PANEL */
+        .message-panel-compact {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            display: none;
+        }
+
+        .message-panel-compact.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .message-panel-title {
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffd700;
+        }
+
+        .close-panel-btn {
+            background: rgba(255, 100, 100, 0.3);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .close-panel-btn:hover {
+            background: rgba(255, 100, 100, 0.5);
+            transform: scale(1.1);
+        }
+
+        .message-list-compact {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .message-item-compact {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-left: 3px solid #00c6ff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .message-item-compact:hover {
+            background: rgba(0, 0, 0, 0.3);
+            transform: translateX(5px);
+        }
+
+        .message-item-compact.unread {
+            background: rgba(0, 198, 255, 0.15);
+            border-left-color: #ffd700;
+        }
+
+        .message-sender-compact {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 4px;
+        }
+
+        .message-content-compact {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .message-time-compact {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .message-empty-compact {
+            text-align: center;
+            padding: 20px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .mark-read-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-family: 'Nunito', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .mark-read-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Progress Section */
+        .progress-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            height: 30px;
+            overflow: hidden;
+            margin: 15px 0;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00c6ff, #0072ff, #00d2ff);
+            border-radius: 50px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #003d5c;
+            box-shadow: 0 0 20px rgba(0, 198, 255, 0.5);
+        }
+
+        .progress-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .progress-detail {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .warning-box {
+            background: rgba(255, 100, 100, 0.3);
+            border: 2px solid rgba(255, 100, 100, 0.5);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+            animation: pulse 2s infinite;
+        }
+
+        .warning-box.filled {
+            background: rgba(100, 255, 100, 0.3);
+            border-color: rgba(100, 255, 100, 0.5);
+            animation: none;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .menu-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .menu-card:hover::before {
+            left: 100%;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .menu-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            line-height: 1;
+            display: block;
+        }
+
+        .menu-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .menu-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Content Pages */
+        .content-page {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Jurnal Form */
+        .jurnal-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Mood Selector */
+        .mood-selector {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .mood-option {
+            background: rgba(255, 255, 255, 0.1);
+            border: 3px solid transparent;
+            border-radius: 15px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mood-option:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mood-option.selected {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .mood-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            display: block;
+            line-height: 1;
+        }
+
+        .mood-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Feeling Scale */
+        .feeling-scale {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+
+        .scale-item {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .scale-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .scale-item.selected {
+            background: rgba(255, 215, 0, 0.3);
+            border-color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        .scale-emoji {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .scale-number {
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* Interactive Questions */
+        .interactive-question {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #00c6ff;
+        }
+
+        .question-text {
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .answer-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .answer-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Nunito', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', sans-serif;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+
+        .answer-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .answer-btn.selected {
+            background: rgba(0, 198, 255, 0.3);
+            border-color: #00c6ff;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.3);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checkbox-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            font-family: 'Nunito', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 198, 255, 0.4);
+        }
+
+        /* Riwayat */
+        .riwayat-list {
+            display: grid;
+            gap: 15px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .riwayat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #00c6ff;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .riwayat-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 100, 100, 0.3);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .delete-btn:hover {
+            background: rgba(255, 100, 100, 0.6);
+            transform: scale(1.1);
+        }
+
+        .riwayat-date {
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            padding-right: 40px;
+        }
+
+        .riwayat-content {
+            display: grid;
+            gap: 5px;
+            font-size: 0.95rem;
+        }
+
+        .mood-display {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 10px;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Progress Teman */
+        .friends-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .friend-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .friend-card:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .friend-avatar {
+            font-size: 3rem;
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .friend-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .friend-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .friend-status {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            display: inline-block;
+        }
+
+        .friend-status.online {
+            background: #64ff64;
+            box-shadow: 0 0 10px #64ff64;
+        }
+
+        .friend-level {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .friend-progress-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .friend-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+
+        .friend-stats {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Quiz */
+        .quiz-container {
+            text-align: center;
+        }
+
+        .quiz-question {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .quiz-option.correct {
+            background: rgba(100, 255, 100, 0.3);
+            border-color: #64ff64;
+        }
+
+        .quiz-option.wrong {
+            background: rgba(255, 100, 100, 0.3);
+            border-color: #ff6464;
+        }
+
+        /* Teacher View */
+        .teacher-badge {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .students-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .student-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .student-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .student-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .student-main {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .student-avatar {
+            font-size: 3rem;
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            line-height: 1;
+        }
+
+        .student-meta h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .student-stats {
+            text-align: right;
+        }
+
+        .student-progress-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        .student-progress-detail {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .student-progress-bar {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .student-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+
+        .view-journal-btn {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .view-journal-btn:hover {
+            background: rgba(255, 215, 0, 0.4);
+        }
+
+        /* Guru Message Section */
+        .message-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .message-section h3 {
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .recipient-select {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Nunito', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .message-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+
+        .delay-info {
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .delay-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .delay-text {
+            flex: 1;
+        }
+
+        .delay-text strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffd700;
+        }
+
+        .countdown-timer {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffd700;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .pending-messages {
+            margin-top: 30px;
+        }
+
+        .pending-item {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ffd700;
+        }
+
+        .pending-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .pending-recipient {
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        .pending-time {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .pending-content {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .pending-status {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .cancel-btn {
+            background: rgba(255, 100, 100, 0.3);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .cancel-btn:hover {
+            background: rgba(255, 100, 100, 0.5);
+        }
+
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .loading-overlay.show {
+            display: flex;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #ffd700;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 1.2rem;
+            color: #ffd700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .passcode-digit {
+                width: 40px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .mood-selector {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .feeling-scale {
+                flex-wrap: wrap;
+            }
+
+            .scale-item {
+                min-width: 50px;
+            }
+
+            .message-panel-compact {
+                padding: 12px 15px;
+            }
+
+            .message-list-compact {
+                max-height: 150px;
+            }
+
+            .version-badge {
+                bottom: 10px;
+                left: 10px;
+                font-size: 0.75rem;
+                padding: 8px 15px;
+            }
+
+            .connection-status {
+                top: 10px;
+                right: 10px;
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+
+            .friend-card {
+                padding: 15px;
+            }
+
+            .friend-avatar {
+                width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            }
+
+            .student-card {
+                padding: 15px;
+            }
+
+            .student-avatar {
+                width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            }
+        }
+
+        /* Animasi Transisi */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Scrollbar Custom */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Badge Level */
+        .level-fish { background: linear-gradient(45deg, #ffd700, #ffaa00) !important; color: #003d5c !important; }
+        .level-dolphin { background: linear-gradient(45deg, #00c6ff, #0072ff) !important; }
+        .level-small-whale { background: linear-gradient(45deg, #9d4edd, #7b2cbf) !important; }
+        .level-blue-whale { background: linear-gradient(45deg, #ff006e, #8338ec) !important; box-shadow: 0 0 20px rgba(255, 0, 110, 0.5) !important; }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            opacity: 0.7;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        /* Modal Konfirmasi */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #006994, #003d5c);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .modal-text {
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 12px 30px;
+            border-radius: 25px;
+            border: none;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .modal-btn.confirm {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+
+        .modal-btn.cancel {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            border-left: 4px solid #ffd700;
+            z-index: 2000;
+            display: none;
+            animation: slideInRight 0.3s ease;
+            max-width: 300px;
+        }
+
+        .toast.show {
+            display: block;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Journal Detail Modal */
+        .journal-detail-modal .modal-content {
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .journal-detail-content {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .journal-detail-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .journal-detail-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .journal-detail-label {
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .journal-detail-value {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Error Message */
+        .error-message {
+            background: rgba(255, 100, 100, 0.2);
+            border: 2px solid rgba(255, 100, 100, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .error-message h3 {
+            color: #ff9999;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animasi -->
+    <div class="ocean" id="ocean">
+        <div class="wave"></div>
+    </div>
+
+    <!-- Connection Status -->
+    <div class="connection-status connecting" id="connectionStatus">
+        <span>🔄</span>
+        <span>Menyambung...</span>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Memuat data...</div>
+    </div>
+
+    <!-- Version Badge -->
+    <div class="version-badge">
+        📦 v2.0 Firebase
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Modal Konfirmasi -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal-content">
+            <div class="modal-title">🗑️ Hapus Jurnal?</div>
+            <div class="modal-text">
+                Apakah kamu yakin ingin menghapus jurnal tanggal <strong id="deleteDate"></strong>?<br>
+                <small style="opacity: 0.8;">Progress akan berkurang -3.33%</small>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" onclick="closeDeleteModal()">Batal</button>
+                <button class="modal-btn confirm" onclick="confirmDelete()">Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Journal Detail Modal -->
+    <div class="modal-overlay journal-detail-modal" id="journalDetailModal">
+        <div class="modal-content">
+            <div class="modal-title">📔 Detail Jurnal</div>
+            <div id="journalDetailContent"></div>
+            <div class="modal-buttons" style="margin-top: 20px;">
+                <button class="modal-btn cancel" onclick="closeJournalDetail()">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div class="login-page" id="loginPage">
+        <div class="login-box fade-in">
+            <div class="school-logo">🌊</div>
+            <h1>Jurnal Ramadhan</h1>
+            <p class="subtitle">Kelas 5A MIN 2 Lamongan</p>
+            <p style="margin-bottom: 20px; opacity: 0.8;">🌙 Tahun 2025 / 1446 H</p>
+            
+            <div class="passcode-display" id="passcodeDisplay">
+                <div class="passcode-digit empty">-</div>
+                <div class="passcode-digit empty">-</div>
+            </div>
+
+            <div class="student-preview" id="studentPreview">
+                <div class="preview-hint">Masukkan nomor absen (01-10)</div>
+            </div>
+            
+            <div class="numpad">
+                <button class="num-btn" onclick="addNumber('1')">1</button>
+                <button class="num-btn" onclick="addNumber('2')">2</button>
+                <button class="num-btn" onclick="addNumber('3')">3</button>
+                <button class="num-btn" onclick="addNumber('4')">4</button>
+                <button class="num-btn" onclick="addNumber('5')">5</button>
+                <button class="num-btn" onclick="addNumber('6')">6</button>
+                <button class="num-btn" onclick="addNumber('7')">7</button>
+                <button class="num-btn" onclick="addNumber('8')">8</button>
+                <button class="num-btn" onclick="addNumber('9')">9</button>
+                <button class="num-btn clear" onclick="clearPasscode()">C</button>
+                <button class="num-btn" onclick="addNumber('0')">0</button>
+                <button class="num-btn" onclick="addNumber('00')">00</button>
+            </div>
+
+            <button class="btn" id="loginBtn" onclick="login()" disabled>Masuk 🚀</button>
+            
+            <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">
+                <small>Guru masukkan kode: 99 🌏</small>
+            </p>
+        </div>
+    </div>
+
+    <!-- Lobby Page -->
+    <div class="lobby-page" id="lobbyPage">
+        <div class="container">
+            <div class="header">
+                <div class="user-info">
+                    <div class="avatar" id="userAvatar">🐠</div>
+                    <div class="user-details">
+                        <h2 id="userName">Nama Siswa</h2>
+                        <p id="userClass">Kelas 5A | MIN 2 Lamongan</p>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="notification-bell" id="notificationBell" onclick="toggleMessagePanel()">
+                        🔔
+                        <span class="notification-badge" id="notifBadge" style="display: none;">0</span>
+                    </div>
+                    
+                    <div class="level-badge" id="levelBadge">
+                        🐟 Ikan Kecil
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-panel-compact" id="messagePanel">
+                <div class="message-panel-header">
+                    <div class="message-panel-title">
+                        🔔 Pesan dari Wali Kelas
+                        <span style="font-size: 0.8rem; opacity: 0.8; font-weight: 400;">Ibu Erna Susanti 🌏</span>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <button class="mark-read-btn" onclick="markAllAsRead()">Tandai dibaca</button>
+                        <button class="close-panel-btn" onclick="closeMessagePanel()" title="Tutup">✕</button>
+                    </div>
+                </div>
+                <div class="message-list-compact" id="messageListCompact">
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h3>Progress Puasa Ramadhan 📊</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar" style="width: 0%">
+                        0%
+                    </div>
+                </div>
+                <div class="progress-text" id="progressText">0/30 hari</div>
+                <div class="progress-detail" id="progressDetail">Setiap hari puasa = +3.33%</div>
+                <div class="warning-box" id="warningBox">
+                    ⚠️ Jurnal belum diisi!
+                </div>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+                <div class="menu-card" onclick="openJurnal()">
+                    <div class="menu-icon">📔</div>
+                    <div class="menu-title">Jurnal Ramadhan</div>
+                    <div class="menu-desc">Catat aktivitas & perasaan harianmu</div>
+                </div>
+                
+                <div class="menu-card" onclick="openQuiz()">
+                    <div class="menu-icon">🎯</div>
+                    <div class="menu-title">Quiz</div>
+                    <div class="menu-desc">Uji pengetahuanmu tentang Ramadhan</div>
+                </div>
+                
+                <div class="menu-card" onclick="openRiwayat()">
+                    <div class="menu-icon">📜</div>
+                    <div class="menu-title">Riwayat Jurnal</div>
+                    <div class="menu-desc">Lihat dan kelola catatan harianmu</div>
+                </div>
+                
+                <div class="menu-card" onclick="openProgressTeman()">
+                    <div class="menu-icon">👥</div>
+                    <div class="menu-title">Progress Teman</div>
+                    <div class="menu-desc">Lihat perkembangan teman-temanmu</div>
+                </div>
+                
+                <div class="menu-card" onclick="logout()" style="background: rgba(255, 100, 100, 0.2);">
+                    <div class="menu-icon">🚪</div>
+                    <div class="menu-title">Keluar</div>
+                    <div class="menu-desc">Log out dari akun</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jurnal Page -->
+    <div class="content-page" id="jurnalPage">
+        <div class="container">
+            <div class="page-header">
+                <h2>📔 Jurnal Ramadhan Hari Ini</h2>
+                <button class="back-btn" onclick="backToLobby()">← Kembali</button>
+            </div>
+            
+            <form class="jurnal-form" id="jurnalForm" onsubmit="saveJurnal(event)">
+                <div class="form-group">
+                    <label>Tanggal 📅</label>
+                    <input type="date" id="jurnalDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Apakah kamu puasa hari ini? 🌙</label>
+                    <select id="puasaStatus" required onchange="updateProgressPreview()">
+                        <option value="">Pilih...</option>
+                        <option value="yes">Ya, saya puasa! 💪 (Hari +1)</option>
+                        <option value="no">Tidak, ada uzur 🤲 (Hari +0)</option>
+                    </select>
+                    <div id="progressPreview" style="margin-top: 10px; padding: 10px; background: rgba(255,215,0,0.2); border-radius: 10px; display: none; font-size: 0.9rem;">
+                        Progress: <strong id="progressAdd">+3.33%</strong> | Hari: <strong id="dayAdd">+1</strong>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Bagaimana mood kamu hari ini? 😊</label>
+                    <div class="mood-selector">
+                        <div class="mood-option" onclick="selectMood('super-happy', this)">
+                            <span class="mood-emoji">🤩</span>
+                            <span class="mood-label">Super Happy</span>
+                        </div>
+                        <div class="mood-option" onclick="selectMood('happy', this)">
+                            <span class="mood-emoji">😊</span>
+                            <span class="mood-label">Happy</span>
+                        </div>
+                        <div class="mood-option" onclick="selectMood('neutral', this)">
+                            <span class="mood-emoji">😐</span>
+                            <span class="mood-label">Biasa</span>
+                        </div>
+                        <div class="mood-option" onclick="selectMood('sad', this)">
+                            <span class="mood-emoji">😔</span>
+                            <span class="mood-label">Sedih</span>
+                        </div>
+                        <div class="mood-option" onclick="selectMood('tired', this)">
+                            <span class="mood-emoji">😴</span>
+                            <span class="mood-label">Lelah</span>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selectedMood" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Seberapa semangat energi kamu hari ini? ⚡</label>
+                    <div class="feeling-scale">
+                        <div class="scale-item" onclick="selectEnergy(1, this)">
+                            <span class="scale-emoji">🔋</span>
+                            <span class="scale-number">1</span>
+                        </div>
+                        <div class="scale-item" onclick="selectEnergy(2, this)">
+                            <span class="scale-emoji">🔋</span>
+                            <span class="scale-number">2</span>
+                        </div>
+                        <div class="scale-item" onclick="selectEnergy(3, this)">
+                            <span class="scale-emoji">🔋</span>
+                            <span class="scale-number">3</span>
+                        </div>
+                        <div class="scale-item" onclick="selectEnergy(4, this)">
+                            <span class="scale-emoji">🔋</span>
+                            <span class="scale-number">4</span>
+                        </div>
+                        <div class="scale-item" onclick="selectEnergy(5, this)">
+                            <span class="scale-emoji">🔋</span>
+                            <span class="scale-number">5</span>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selectedEnergy" required>
+                    <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8; text-align: center;">
+                        <span id="energyLabel">Pilih level energimu</span>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <label>Pertanyaan Hari Ini 🤔</label>
+                    
+                    <div class="interactive-question">
+                        <div class="question-text">1. Apa yang paling kamu syukuri hari ini?</div>
+                        <div class="answer-options">
+                            <button type="button" class="answer-btn" onclick="selectAnswer('syukur', 'keluarga', this)">👨‍👩‍👧‍👦 Keluarga</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('syukur', 'kesehatan', this)">💪 Kesehatan</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('syukur', 'makanan', this)">🍽️ Makanan</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('syukur', 'teman', this)">👫 Teman</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('syukur', 'lainnya', this)">✨ Lainnya</button>
+                        </div>
+                        <input type="hidden" id="answer-syukur">
+                    </div>
+
+                    <div class="interactive-question">
+                        <div class="question-text">2. Seberapa mudah kamu menahan lapar & haus hari ini?</div>
+                        <div class="answer-options">
+                            <button type="button" class="answer-btn" onclick="selectAnswer('tahan', 'sangat-mudah', this)">😌 Sangat Mudah</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('tahan', 'mudah', this)">🙂 Mudah</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('tahan', 'biasa', this)">😐 Biasa Saja</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('tahan', 'susah', this)">😣 Susah</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('tahan', 'sangat-susah', this)">😫 Sangat Susah</button>
+                        </div>
+                        <input type="hidden" id="answer-tahan">
+                    </div>
+
+                    <div class="interactive-question">
+                        <div class="question-text">3. Apa tantangan terbesar hari ini?</div>
+                        <div class="answer-options">
+                            <button type="button" class="answer-btn" onclick="selectAnswer('tantangan', 'bangun-sahur', this)">⏰ Bangun Sahur</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('tantangan', 'tahan-lapar', this)">🍽️ Tahan Lapar</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('tantangan', 'tahan-marah', this)">😠 Tahan Marah</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('tantangan', 'sholat-tepat-waktu', this)">🕌 Sholat Tepat Waktu</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('tantangan', 'tidur-siang', this)">😴 Tidur Siang</button>
+                        </div>
+                        <input type="hidden" id="answer-tantangan">
+                    </div>
+
+                    <div class="interactive-question">
+                        <div class="question-text">4. Apa kebaikan yang sudah kamu lakukan hari ini?</div>
+                        <div class="answer-options">
+                            <button type="button" class="answer-btn" onclick="selectAnswer('kebaikan', 'membantu-ortu', this)">🙏 Membantu Orang Tua</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('kebaikan', 'berbagi', this)">🎁 Berbagi dengan Teman</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('kebaikan', 'sedekah', this)">💰 Sedekah</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('kebaikan', 'menghormati', this)">🤗 Menghormati Guru</button>
+                            <button type="button" class="answer-btn" onclick="selectAnswer('kebaikan', 'belum-ada', this)">⏳ Belum Ada</button>
+                        </div>
+                        <input type="hidden" id="answer-kebaikan">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Sholat Hari Ini 🕌</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="sholat" value="subuh"> Subuh
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="sholat" value="dzuhur"> Dzuhur
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="sholat" value="ashar"> Ashar
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="sholat" value="maghrib"> Maghrib
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="sholat" value="isya"> Isya
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="sholat" value="tarawih"> Tarawih
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Tilawah Al-Quran 📖</label>
+                    <input type="text" id="tilawah" placeholder="Contoh: Juz 1, Surah Al-Baqarah ayat 1-20">
+                </div>
+
+                <div class="form-group">
+                    <label>Amalan Sunnah Lainnya ✨</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="amalan" value="sedekah"> Sedekah
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="amalan" value="dzikir"> Dzikir Pagi & Petang
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="amalan" value="doa"> Berdoa untuk orang tua
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="amalan" value="sholawat"> Bersholawat
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="save-btn">Simpan Jurnal 💾</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Riwayat Page -->
+    <div class="content-page" id="riwayatPage">
+        <div class="container">
+            <div class="page-header">
+                <h2>📜 Riwayat Jurnal</h2>
+                <button class="back-btn" onclick="backToLobby()">← Kembali</button>
+            </div>
+            <div class="riwayat-list" id="riwayatList">
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Teman Page -->
+    <div class="content-page" id="progressTemanPage">
+        <div class="container">
+            <div class="page-header">
+                <h2>👥 Progress Teman Kelas 5A</h2>
+                <button class="back-btn" onclick="backToLobby()">← Kembali</button>
+            </div>
+            <div class="friends-list" id="friendsList">
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Page -->
+    <div class="content-page" id="quizPage">
+        <div class="container">
+            <div class="page-header">
+                <h2>🎯 Quiz Ramadhan</h2>
+                <button class="back-btn" onclick="backToLobby()">← Kembali</button>
+            </div>
+            <div class="quiz-container" id="quizContainer">
+            </div>
+        </div>
+    </div>
+
+    <!-- Teacher View Page -->
+    <div class="content-page" id="teacherPage">
+        <div class="container">
+            <div class="page-header">
+                <div style="display: flex; align-items: center;">
+                    <h2>👩‍🏫 Dashboard Guru</h2>
+                    <span class="teacher-badge">Ibu Erna Susanti</span>
+                </div>
+                <button class="back-btn" onclick="logout()">Keluar 🚪</button>
+            </div>
+            
+            <div class="progress-section" style="margin-bottom: 30px;">
+                <h3>Ringkasan Kelas 5A 📊</h3>
+                <p style="margin-top: 10px; opacity: 0.9;">Total Siswa: 10 | Sedang Online: <span id="onlineCount">0</span></p>
+            </div>
+
+            <div class="message-section">
+                <h3>📨 Kirim Pesan ke Murid</h3>
+                <p style="margin-bottom: 15px; opacity: 0.9; font-size: 0.95rem;">
+                    Pesan akan dikirim setelah <strong>2 menit</strong> untuk pengecekan data dan bug fixing.
+                </p>
+                
+                <select class="recipient-select" id="messageRecipient">
+                    <option value="">Pilih Penerima...</option>
+                    <option value="all">📢 Semua Murid</option>
+                    <option value="1">1. Ade Gilang Dinar Pratama 🐠</option>
+                    <option value="2">2. Adiba Shafira Arraniyah 🐚</option>
+                    <option value="3">3. Aisyah Naura Rinjani 🦭</option>
+                    <option value="4">4. Ajeng Adelia Azzahra 🐡</option>
+                    <option value="5">5. Anindya Syakilla Khoirina 🐳</option>
+                    <option value="6">6. Bintang Haraya Al Fauzi 🦑</option>
+                    <option value="7">7. Haidar Almairil Mukminin 🦈</option>
+                    <option value="8">8. Hisa El Tsania Uffilana Kailana 🐬</option>
+                    <option value="9">9. Jauza Jahira Putri Kurniawan 🪸</option>
+                    <option value="10">10. Nathania Ruby Almahira 🐟</option>
+                </select>
+                
+                <textarea class="message-textarea" id="messageContent" placeholder="Tulis pesan motivasi, pengingat, atau catatan untuk murid..."></textarea>
+                
+                <div class="delay-info">
+                    <div class="delay-icon">⏱️</div>
+                    <div class="delay-text">
+                        <strong>Delay 2 Menit Aktif</strong>
+                        <span style="display: block; font-size: 0.9rem; opacity: 0.9;">
+                            Sistem akan memeriksa data, validasi konten, dan memastikan tidak ada bug sebelum mengirim.
+                        </span>
+                    </div>
+                </div>
+                
+                <button class="btn" onclick="sendMessage()" id="sendMessageBtn">
+                    📤 Kirim Pesan (Delay 2 Menit)
+                </button>
+            </div>
+
+            <div class="pending-messages" id="pendingMessagesSection" style="display: none;">
+                <h3>⏳ Pesan Dalam Proses</h3>
+                <div id="pendingList">
+                </div>
+            </div>
+
+            <div class="students-list" id="studentsList">
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+        import { 
+            getDatabase, 
+            ref, 
+            set, 
+            get, 
+            onValue, 
+            update, 
+            remove,
+            push,
+            onDisconnect,
+            serverTimestamp 
+        } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA1IfL3Ho_G-rpPICx1U4R_Kg0buQJ4XR0",
+            authDomain: "jurnal-ramadhan5a.firebaseapp.com",
+            databaseURL: "https://jurnal-ramadhan5a-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "jurnal-ramadhan5a",
+            storageBucket: "jurnal-ramadhan5a.firebasestorage.app",
+            messagingSenderId: "837129496524",
+            appId: "1:837129496524:web:b87c9002e01a5e68ee5f69"
+        };
+
+        // Initialize Firebase
+        let app;
+        let db;
+        let firebaseInitialized = false;
+
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getDatabase(app);
+            firebaseInitialized = true;
+            console.log('Firebase initialized successfully');
+        } catch (error) {
+            console.error('Firebase initialization error:', error);
+            updateConnectionStatus('error');
+        }
+
+        // Data Siswa
+        const studentsData = {
+            1: { name: "Ade Gilang Dinar Pratama", emoji: "🐠", color: "#FFD700" },
+            2: { name: "Adiba Shafira Arraniyah", emoji: "🐚", color: "#FFB6C1" },
+            3: { name: "Aisyah Naura Rinjani", emoji: "🦭", color: "#98D8C8" },
+            4: { name: "Ajeng Adelia Azzahra", emoji: "🐡", color: "#F7DC6F" },
+            5: { name: "Anindya Syakilla Khoirina", emoji: "🐳", color: "#85C1E2" },
+            6: { name: "Bintang Haraya Al Fauzi", emoji: "🦑", color: "#BB8FCE" },
+            7: { name: "Haidar Almairil Mukminin", emoji: "🦈", color: "#7FB3D5" },
+            8: { name: "Hisa El Tsania Uffilana Kailana", emoji: "🐬", color: "#76D7C4" },
+            9: { name: "Jauza Jahira Putri Kurniawan", emoji: "🪸", color: "#F8B500" },
+            10: { name: "Nathania Ruby Almahira", emoji: "🐟", color: "#FF6B6B" }
+        };
+
+        const teacherData = { name: "Ibu Erna Susanti", emoji: "🌏", isTeacher: true };
+
+        const PROGRESS_PER_DAY = 3.33;
+        const MESSAGE_DELAY = 2 * 60 * 1000;
+
+        function getLevelInfo(percentage) {
+            if (percentage >= 75) return { name: "🐋 Paus Biru", class: "level-blue-whale", min: 75, max: 100 };
+            if (percentage >= 55) return { name: "🐳 Paus Kecil", class: "level-small-whale", min: 55, max: 75 };
+            if (percentage >= 35) return { name: "🐬 Lumba-lumba", class: "level-dolphin", min: 35, max: 55 };
+            return { name: "🐟 Ikan Kecil", class: "level-fish", min: 0, max: 35 };
+        }
+
+        const moodLabels = {
+            'super-happy': '🤩 Super Happy',
+            'happy': '😊 Happy',
+            'neutral': '😐 Biasa',
+            'sad': '😔 Sedih',
+            'tired': '😴 Lelah'
+        };
+
+        const energyLabels = {
+            1: '1 - Sangat Lemah',
+            2: '2 - Lemah',
+            3: '3 - Biasa',
+            4: '4 - Semangat',
+            5: '5 - Sangat Semangat!'
+        };
+
+        let currentUser = null;
+        let currentUserId = null;
+        let journalToDelete = null;
+        let messageCheckInterval = null;
+        let messagePanelOpen = false;
+        let messagesListener = null;
+        let onlineListener = null;
+        let isConnected = false;
+
+        function updateConnectionStatus(status) {
+            const statusEl = document.getElementById('connectionStatus');
+            statusEl.className = 'connection-status ' + status;
+            
+            if (status === 'online') {
+                statusEl.innerHTML = '<span>🟢</span><span>Online</span>';
+                isConnected = true;
+            } else if (status === 'offline') {
+                statusEl.innerHTML = '<span>🔴</span><span>Offline</span>';
+                isConnected = false;
+            } else if (status === 'error') {
+                statusEl.innerHTML = '<span>⚠️</span><span>Error</span>';
+                isConnected = false;
+            } else {
+                statusEl.innerHTML = '<span>🔄</span><span>Menyambung...</span>';
+                isConnected = false;
+            }
+        }
+
+        // Check connection only if Firebase initialized
+        if (firebaseInitialized) {
+            const connectedRef = ref(db, '.info/connected');
+            onValue(connectedRef, (snap) => {
+                if (snap.val() === true) {
+                    updateConnectionStatus('online');
+                } else {
+                    updateConnectionStatus('offline');
+                }
+            }, (error) => {
+                console.error('Connection error:', error);
+                updateConnectionStatus('error');
+            });
+        }
+
+        function createBubbles() {
+            const ocean = document.getElementById('ocean');
+            for (let i = 0; i < 15; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                const size = Math.random() * 60 + 20;
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                bubble.style.animationDelay = Math.random() * 5 + 's';
+                ocean.insertBefore(bubble, ocean.firstChild);
+            }
+        }
+
+        createBubbles();
+
+        let passcode = '';
+
+        window.addNumber = function(num) {
+            if (passcode.length < 2) {
+                passcode += num;
+                updatePasscodeDisplay();
+            }
+        }
+
+        window.clearPasscode = function() {
+            passcode = '';
+            updatePasscodeDisplay();
+        }
+
+        function updatePasscodeDisplay() {
+            const display = document.getElementById('passcodeDisplay');
+            const preview = document.getElementById('studentPreview');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            let html = '';
+            for (let i = 0; i < 2; i++) {
+                if (i < passcode.length) {
+                    html += `<div class="passcode-digit">${passcode[i]}</div>`;
+                } else {
+                    html += `<div class="passcode-digit empty">-</div>`;
+                }
+            }
+            display.innerHTML = html;
+            
+            if (passcode === '') {
+                preview.innerHTML = '<div class="preview-hint">Masukkan nomor absen (01-10)</div>';
+                preview.classList.remove('active');
+                loginBtn.disabled = true;
+            } else if (passcode === '99') {
+                preview.innerHTML = `
+                    <div class="preview-emoji">${teacherData.emoji}</div>
+                    <div>
+                        <div class="preview-name">${teacherData.name}</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">Guru Kelas 5A</div>
+                    </div>
+                `;
+                preview.classList.add('active');
+                loginBtn.disabled = false;
+            } else {
+                const num = parseInt(passcode);
+                if (num >= 1 && num <= 10) {
+                    const student = studentsData[num];
+                    preview.innerHTML = `
+                        <div class="preview-emoji">${student.emoji}</div>
+                        <div>
+                            <div class="preview-name">${student.name}</div>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Nomor Absen: ${num}</div>
+                        </div>
+                    `;
+                    preview.classList.add('active');
+                    loginBtn.disabled = false;
+                } else {
+                    preview.innerHTML = '<div class="preview-hint" style="color: #ff6b6b;">Nomor absen tidak valid (01-10)</div>';
+                    preview.classList.remove('active');
+                    loginBtn.disabled = true;
+                }
+            }
+        }
+
+        window.login = async function() {
+            if (!firebaseInitialized) {
+                showToast('Firebase belum terinisialisasi. Periksa koneksi internet! ❌');
+                return;
+            }
+
+            showLoading(true);
+            
+            try {
+                if (passcode === '99') {
+                    currentUser = teacherData;
+                    currentUserId = 'teacher';
+                    await showTeacherView();
+                    startMessageChecker();
+                } else {
+                    const num = parseInt(passcode);
+                    if (num >= 1 && num <= 10) {
+                        currentUserId = num.toString();
+                        currentUser = studentsData[num];
+                        
+                        try {
+                            const userStatusRef = ref(db, `status/${currentUserId}`);
+                            await set(userStatusRef, {
+                                online: true,
+                                lastActive: serverTimestamp()
+                            });
+                            
+                            onDisconnect(userStatusRef).set({
+                                online: false,
+                                lastActive: serverTimestamp()
+                            });
+                        } catch (statusError) {
+                            console.warn('Status update failed:', statusError);
+                        }
+                        
+                        showLobby();
+                        checkNewMessages();
+                    }
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showToast('Gagal login. Coba lagi! ❌');
+            } finally {
+                clearPasscode();
+                showLoading(false);
+            }
+        }
+
+        function showLobby() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('lobbyPage').style.display = 'block';
+            document.getElementById('jurnalPage').style.display = 'none';
+            document.getElementById('riwayatPage').style.display = 'none';
+            document.getElementById('progressTemanPage').style.display = 'none';
+            document.getElementById('quizPage').style.display = 'none';
+            document.getElementById('teacherPage').style.display = 'none';
+
+            document.getElementById('userAvatar').textContent = currentUser.emoji;
+            document.getElementById('userName').textContent = currentUser.name;
+            
+            closeMessagePanel();
+            
+            updateProgress();
+            checkTodayJournal();
+            setupMessagesListener();
+        }
+
+        async function updateProgress() {
+            try {
+                const journals = await getJournals();
+                const fastingDays = journals.filter(j => j.puasa === 'yes').length;
+                const percentage = Math.min(Math.round((fastingDays * PROGRESS_PER_DAY) * 100) / 100, 100);
+                
+                const levelInfo = getLevelInfo(percentage);
+                const badge = document.getElementById('levelBadge');
+                badge.textContent = levelInfo.name;
+                badge.className = 'level-badge ' + levelInfo.class;
+                
+                const progressBar = document.getElementById('progressBar');
+                progressBar.style.width = percentage + '%';
+                progressBar.textContent = percentage + '%';
+                
+                document.getElementById('progressText').textContent = `${fastingDays}/30 hari`;
+                document.getElementById('progressDetail').textContent = `Setiap hari puasa = +${PROGRESS_PER_DAY}% | Total: ${percentage}%`;
+            } catch (error) {
+                console.error('Error updating progress:', error);
+            }
+        }
+
+        async function checkTodayJournal() {
+            try {
+                const today = new Date().toISOString().split('T')[0];
+                const journals = await getJournals();
+                const todayJournal = journals.find(j => j.date === today);
+                const warningBox = document.getElementById('warningBox');
+                
+                if (todayJournal) {
+                    if (todayJournal.puasa === 'yes') {
+                        warningBox.innerHTML = '✅ Jurnal sudah diisi! Hari ini puasa (+3.33%)';
+                    } else {
+                        warningBox.innerHTML = '✅ Jurnal sudah diisi! Hari ini tidak puasa (0%)';
+                    }
+                    warningBox.classList.add('filled');
+                    warningBox.style.display = 'block';
+                } else {
+                    warningBox.innerHTML = '⚠️ Jurnal belum diisi! Isi sekarang untuk tambah progress';
+                    warningBox.classList.remove('filled');
+                    warningBox.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error checking today journal:', error);
+            }
+        }
+
+        window.updateProgressPreview = function() {
+            const puasa = document.getElementById('puasaStatus').value;
+            const preview = document.getElementById('progressPreview');
+            const addText = document.getElementById('progressAdd');
+            const dayText = document.getElementById('dayAdd');
+            
+            if (puasa === 'yes') {
+                preview.style.display = 'block';
+                addText.textContent = `+${PROGRESS_PER_DAY}%`;
+                dayText.textContent = '+1';
+                preview.style.background = 'rgba(100, 255, 100, 0.2)';
+            } else if (puasa === 'no') {
+                preview.style.display = 'block';
+                addText.textContent = '0%';
+                dayText.textContent = '0';
+                preview.style.background = 'rgba(255, 100, 100, 0.2)';
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+
+        window.selectMood = function(mood, element) {
+            document.querySelectorAll('.mood-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('selectedMood').value = mood;
+        }
+
+        window.selectEnergy = function(level, element) {
+            document.querySelectorAll('.scale-item').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('selectedEnergy').value = level;
+            document.getElementById('energyLabel').textContent = energyLabels[level];
+        }
+
+        window.selectAnswer = function(category, value, element) {
+            const container = element.parentElement;
+            container.querySelectorAll('.answer-btn').forEach(btn => btn.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('answer-' + category).value = value;
+        }
+
+        async function getJournals() {
+            if (!firebaseInitialized) return [];
+            
+            try {
+                const journalsRef = ref(db, `journals/${currentUserId}`);
+                const snapshot = await get(journalsRef);
+                
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    return Object.entries(data).map(([key, val]) => ({...val, _key: key})).sort((a, b) => new Date(b.date) - new Date(a.date));
+                }
+            } catch (error) {
+                console.error('Error getting journals:', error);
+            }
+            return [];
+        }
+
+        window.saveJurnal = async function(event) {
+            event.preventDefault();
+            
+            if (!firebaseInitialized) {
+                showToast('Firebase tidak tersedia. Periksa koneksi! ❌');
+                return;
+            }
+
+            showLoading(true);
+            
+            try {
+                const date = document.getElementById('jurnalDate').value;
+                const puasa = document.getElementById('puasaStatus').value;
+                const mood = document.getElementById('selectedMood').value;
+                const energy = document.getElementById('selectedEnergy').value;
+                
+                if (!mood) {
+                    showToast('Pilih mood kamu hari ini! 😊');
+                    showLoading(false);
+                    return;
+                }
+                if (!energy) {
+                    showToast('Pilih level energi kamu! ⚡');
+                    showLoading(false);
+                    return;
+                }
+                
+                const sholatChecks = document.querySelectorAll('input[name="sholat"]:checked');
+                const sholat = Array.from(sholatChecks).map(cb => cb.value);
+                
+                const amalanChecks = document.querySelectorAll('input[name="amalan"]:checked');
+                const amalan = Array.from(amalanChecks).map(cb => cb.value);
+                
+                const tilawah = document.getElementById('tilawah').value;
+                
+                const syukur = document.getElementById('answer-syukur').value;
+                const tahan = document.getElementById('answer-tahan').value;
+                const tantangan = document.getElementById('answer-tantangan').value;
+                const kebaikan = document.getElementById('answer-kebaikan').value;
+                
+                const journal = {
+                    date,
+                    puasa,
+                    mood,
+                    energy: parseInt(energy),
+                    interactive: {
+                        syukur,
+                        tahan,
+                        tantangan,
+                        kebaikan
+                    },
+                    sholat,
+                    amalan,
+                    tilawah,
+                    timestamp: Date.now()
+                };
+                
+                const journalsRef = ref(db, `journals/${currentUserId}`);
+                const snapshot = await get(journalsRef);
+                
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    const existingKey = Object.keys(data).find(key => data[key].date === date);
+                    
+                    if (existingKey) {
+                        await update(ref(db, `journals/${currentUserId}/${existingKey}`), journal);
+                    } else {
+                        await push(journalsRef, journal);
+                    }
+                } else {
+                    await push(journalsRef, journal);
+                }
+                
+                const allJournals = await getJournals();
+                const fastingDays = allJournals.filter(j => j.puasa === 'yes').length;
+                const percentage = Math.min(Math.round((fastingDays * PROGRESS_PER_DAY) * 100) / 100, 100);
+                
+                showToast(`Jurnal berhasil disimpan! 🎉\nProgress: ${percentage}% | Hari: ${fastingDays}/30`);
+                backToLobby();
+            } catch (error) {
+                console.error('Error saving journal:', error);
+                showToast('Gagal menyimpan jurnal. Coba lagi! ❌');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        window.openJurnal = function() {
+            hideAllPages();
+            document.getElementById('jurnalPage').style.display = 'block';
+            document.getElementById('jurnalPage').classList.add('fade-in');
+            
+            document.getElementById('jurnalDate').value = new Date().toISOString().split('T')[0];
+            
+            document.getElementById('puasaStatus').value = '';
+            document.getElementById('progressPreview').style.display = 'none';
+            document.querySelectorAll('.mood-option').forEach(el => el.classList.remove('selected'));
+            document.getElementById('selectedMood').value = '';
+            document.querySelectorAll('.scale-item').forEach(el => el.classList.remove('selected'));
+            document.getElementById('selectedEnergy').value = '';
+            document.getElementById('energyLabel').textContent = 'Pilih level energimu';
+            document.querySelectorAll('.answer-btn').forEach(btn => btn.classList.remove('selected'));
+            document.querySelectorAll('input[type="hidden"][id^="answer-"]').forEach(input => input.value = '');
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
+        }
+
+        window.openRiwayat = async function() {
+            hideAllPages();
+            document.getElementById('riwayatPage').style.display = 'block';
+            document.getElementById('riwayatPage').classList.add('fade-in');
+            showLoading(true);
+            await renderRiwayat();
+            showLoading(false);
+        }
+
+        async function renderRiwayat() {
+            try {
+                const journals = await getJournals();
+                const list = document.getElementById('riwayatList');
+                
+                if (journals.length === 0) {
+                    list.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📝</div>
+                            <h3>Belum ada jurnal</h3>
+                            <p>Mulai catat perjalanan Ramadhanmu hari ini!</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                list.innerHTML = journals.map((j, index) => `
+                    <div class="riwayat-item">
+                        <button class="delete-btn" onclick="showDeleteModal('${j.date}', '${j._key}')" title="Hapus jurnal">🗑️</button>
+                        <div class="riwayat-date">
+                            📅 ${formatDate(j.date)} 
+                            ${j.puasa === 'yes' ? '✅ Puasa (+1 hari)' : '⚠️ Tidak Puasa (0 hari)'}
+                        </div>
+                        <div class="riwayat-content">
+                            <p>
+                                <span class="mood-display">Mood: ${moodLabels[j.mood] || '-'}</span>
+                                <span class="mood-display">Energi: ${j.energy ? '⚡'.repeat(j.energy) : '-'}</span>
+                            </p>
+                            ${j.interactive ? `
+                            <p><strong>🙏 Bersyukur:</strong> ${getAnswerLabel('syukur', j.interactive.syukur)}</p>
+                            <p><strong>💪 Menahan Puasa:</strong> ${getAnswerLabel('tahan', j.interactive.tahan)}</p>
+                            <p><strong>🎯 Tantangan:</strong> ${getAnswerLabel('tantangan', j.interactive.tantangan)}</p>
+                            <p><strong>❤️ Kebaikan:</strong> ${getAnswerLabel('kebaikan', j.interactive.kebaikan)}</p>
+                            ` : ''}
+                            <p><strong>🕌 Sholat:</strong> ${j.sholat.join(', ') || '-'}</p>
+                            <p><strong>📖 Tilawah:</strong> ${j.tilawah || '-'}</p>
+                            <p><strong>✨ Amalan:</strong> ${j.amalan.join(', ') || '-'}</p>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error rendering riwayat:', error);
+                document.getElementById('riwayatList').innerHTML = `
+                    <div class="error-message">
+                        <h3>⚠️ Gagal memuat data</h3>
+                        <p>Periksa koneksi internet dan coba lagi.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function getAnswerLabel(category, value) {
+            if (!value) return '-';
+            const labels = {
+                'syukur': {
+                    'keluarga': '👨‍👩‍👧‍👦 Keluarga',
+                    'kesehatan': '💪 Kesehatan',
+                    'makanan': '🍽️ Makanan',
+                    'teman': '👫 Teman',
+                    'lainnya': '✨ Lainnya'
+                },
+                'tahan': {
+                    'sangat-mudah': '😌 Sangat Mudah',
+                    'mudah': '🙂 Mudah',
+                    'biasa': '😐 Biasa Saja',
+                    'susah': '😣 Susah',
+                    'sangat-susah': '😫 Sangat Susah'
+                },
+                'tantangan': {
+                    'bangun-sahur': '⏰ Bangun Sahur',
+                    'tahan-lapar': '🍽️ Tahan Lapar',
+                    'tahan-marah': '😠 Tahan Marah',
+                    'sholat-tepat-waktu': '🕌 Sholat Tepat Waktu',
+                    'tidur-siang': '😴 Tidur Siang'
+                },
+                'kebaikan': {
+                    'membantu-ortu': '🙏 Membantu Orang Tua',
+                    'berbagi': '🎁 Berbagi dengan Teman',
+                    'sedekah': '💰 Sedekah',
+                    'menghormati': '🤗 Menghormati Guru',
+                    'belum-ada': '⏳ Belum Ada'
+                }
+            };
+            return labels[category][value] || value;
+        }
+
+        window.showDeleteModal = function(date, key) {
+            journalToDelete = { date, key };
+            document.getElementById('deleteDate').textContent = formatDate(date);
+            document.getElementById('deleteModal').style.display = 'flex';
+        }
+
+        window.closeDeleteModal = function() {
+            document.getElementById('deleteModal').style.display = 'none';
+            journalToDelete = null;
+        }
+
+        window.confirmDelete = async function() {
+            if (!journalToDelete || !firebaseInitialized) return;
+            
+            showLoading(true);
+            
+            try {
+                await remove(ref(db, `journals/${currentUserId}/${journalToDelete.key}`));
+                
+                closeDeleteModal();
+                await renderRiwayat();
+                await updateProgress();
+                
+                showToast('Jurnal berhasil dihapus! ✅');
+            } catch (error) {
+                console.error('Error deleting journal:', error);
+                showToast('Gagal menghapus jurnal ❌');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        window.openProgressTeman = async function() {
+            hideAllPages();
+            document.getElementById('progressTemanPage').style.display = 'block';
+            document.getElementById('progressTemanPage').classList.add('fade-in');
+            showLoading(true);
+            await renderFriendsList();
+            showLoading(false);
+        }
+
+        async function renderFriendsList() {
+            const list = document.getElementById('friendsList');
+            let html = '';
+            
+            for (let i = 1; i <= 10; i++) {
+                if (i == currentUserId) continue;
+                
+                const student = studentsData[i];
+                let journals = [];
+                let isOnline = false;
+                
+                if (firebaseInitialized) {
+                    try {
+                        const journalsRef = ref(db, `journals/${i}`);
+                        const snapshot = await get(journalsRef);
+                        if (snapshot.exists()) {
+                            journals = Object.values(snapshot.val());
+                        }
+                        
+                        const statusSnap = await get(ref(db, `status/${i}`));
+                        isOnline = statusSnap.exists() && statusSnap.val().online === true;
+                    } catch (error) {
+                        console.warn(`Error loading data for student ${i}:`, error);
+                    }
+                }
+                
+                const fastingDays = journals.filter(j => j.puasa === 'yes').length;
+                const percentage = Math.min(Math.round((fastingDays * PROGRESS_PER_DAY) * 100) / 100, 100);
+                const levelInfo = getLevelInfo(percentage);
+                
+                html += `
+                    <div class="friend-card">
+                        <div class="friend-avatar">${student.emoji}</div>
+                        <div class="friend-info">
+                            <div class="friend-name">
+                                ${student.name}
+                                <span class="friend-status ${isOnline ? 'online' : ''}"></span>
+                            </div>
+                            <div class="friend-level">
+                                <span>${levelInfo.name}</span>
+                            </div>
+                            <div class="friend-progress-container">
+                                <div class="friend-progress-bar" style="width: ${percentage}%"></div>
+                            </div>
+                            <div class="friend-stats">${fastingDays}/30 hari (${percentage}%)</div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            list.innerHTML = html;
+        }
+
+        const quizQuestions = [
+            {
+                q: "Berapa jumlah rakaat sholat Tarawih yang dianjurkan?",
+                options: ["8 rakaat", "11 rakaat", "20 rakaat", "Semua benar"],
+                correct: 3
+            },
+            {
+                q: "Apa nama malam yang lebih baik dari seribu bulan?",
+                options: ["Malam Nisfu Syaban", "Malam Lailatul Qadar", "Malam Jumat", "Malam Tahun Baru"],
+                correct: 1
+            },
+            {
+                q: "Siapa yang wajib berpuasa Ramadhan?",
+                options: ["Anak kecil", "Orang dewasa yang berakal sehat", "Orang sakit", "Musafir"],
+                correct: 1
+            },
+            {
+                q: "Apa yang membatalkan puasa?",
+                options: ["Makan dan minum sengaja", "Tidur seharian", "Berenang", "Main game"],
+                correct: 0
+            },
+            {
+                q: "Apa arti kata 'Ramadhan'?",
+                options: ["Bulan gembira", "Bulan yang panas", "Bulan penuh berkah", "Bulan kemenangan"],
+                correct: 1
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+
+        window.openQuiz = function() {
+            hideAllPages();
+            document.getElementById('quizPage').style.display = 'block';
+            document.getElementById('quizPage').classList.add('fade-in');
+            currentQuizIndex = 0;
+            quizScore = 0;
+            showQuizQuestion();
+        }
+
+        function showQuizQuestion() {
+            const container = document.getElementById('quizContainer');
+            
+            if (currentQuizIndex >= quizQuestions.length) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+                        <h2>Quiz Selesai!</h2>
+                        <p style="font-size: 1.5rem; margin: 20px 0;">Skor kamu: ${quizScore}/${quizQuestions.length}</p>
+                        <button class="btn" onclick="openQuiz()" style="margin-top: 20px;">Coba Lagi 🔄</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            const q = quizQuestions[currentQuizIndex];
+            container.innerHTML = `
+                <div class="quiz-question">
+                    <p style="margin-bottom: 10px; opacity: 0.8;">Soal ${currentQuizIndex + 1} dari ${quizQuestions.length}</p>
+                    <h3>${q.q}</h3>
+                </div>
+                <div class="quiz-options">
+                    ${q.options.map((opt, idx) => `
+                        <div class="quiz-option" onclick="answerQuiz(${idx})">${opt}</div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        window.answerQuiz = function(answerIndex) {
+            const q = quizQuestions[currentQuizIndex];
+            const options = document.querySelectorAll('.quiz-option');
+            
+            options[answerIndex].classList.add(answerIndex === q.correct ? 'correct' : 'wrong');
+            if (answerIndex !== q.correct) {
+                options[q.correct].classList.add('correct');
+            } else {
+                quizScore++;
+            }
+            
+            setTimeout(() => {
+                currentQuizIndex++;
+                showQuizQuestion();
+            }, 1500);
+        }
+
+        window.toggleMessagePanel = function() {
+            const panel = document.getElementById('messagePanel');
+            messagePanelOpen = !messagePanelOpen;
+            
+            if (messagePanelOpen) {
+                panel.classList.add('show');
+                renderCompactMessages();
+            } else {
+                panel.classList.remove('show');
+            }
+        }
+
+        window.closeMessagePanel = function() {
+            const panel = document.getElementById('messagePanel');
+            panel.classList.remove('show');
+            messagePanelOpen = false;
+        }
+
+        function setupMessagesListener() {
+            if (!firebaseInitialized) return;
+            
+            if (messagesListener) {
+                messagesListener();
+            }
+            
+            const messagesRef = ref(db, `messages/${currentUserId}`);
+            messagesListener = onValue(messagesRef, () => {
+                updateNotificationBell();
+                if (messagePanelOpen) {
+                    renderCompactMessages();
+                }
+            }, (error) => {
+                console.error('Messages listener error:', error);
+            });
+        }
+
+        async function renderCompactMessages() {
+            const list = document.getElementById('messageListCompact');
+            
+            if (!firebaseInitialized) {
+                list.innerHTML = '<div class="message-empty-compact">Firebase tidak tersedia</div>';
+                return;
+            }
+            
+            try {
+                const messagesRef = ref(db, `messages/${currentUserId}`);
+                const snapshot = await get(messagesRef);
+                
+                if (!snapshot.exists()) {
+                    list.innerHTML = `
+                        <div class="message-empty-compact">
+                            <div style="font-size: 2rem; margin-bottom: 5px;">📭</div>
+                            <p>Belum ada pesan dari Wali Kelas</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const messages = Object.values(snapshot.val());
+                messages.sort((a, b) => (b.deliveredAt || 0) - (a.deliveredAt || 0));
+                
+                list.innerHTML = messages.map(msg => `
+                    <div class="message-item-compact ${!msg.read ? 'unread' : ''}" onclick="readMessage('${msg.id}')">
+                        <div class="message-sender-compact">🌏 ${msg.sender}</div>
+                        <div class="message-content-compact">${msg.content}</div>
+                        <div class="message-time-compact">${formatDateTime(msg.deliveredAt || msg.createdAt)}</div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading messages:', error);
+                list.innerHTML = '<div class="message-empty-compact">Gagal memuat pesan</div>';
+            }
+        }
+
+        window.readMessage = async function(messageId) {
+            if (!firebaseInitialized) return;
+            
+            try {
+                const messagesRef = ref(db, `messages/${currentUserId}`);
+                const snapshot = await get(messagesRef);
+                
+                if (snapshot.exists()) {
+                    const messages = snapshot.val();
+                    const key = Object.keys(messages).find(k => messages[k].id === messageId);
+                    
+                    if (key && !messages[key].read) {
+                        await update(ref(db, `messages/${currentUserId}/${key}`), { read: true });
+                        renderCompactMessages();
+                        updateNotificationBell();
+                        showToast('Pesan ditandai sudah dibaca ✓');
+                    }
+                }
+            } catch (error) {
+                console.error('Error reading message:', error);
+            }
+        }
+
+        window.markAllAsRead = async function() {
+            if (!firebaseInitialized) return;
+            
+            try {
+                const messagesRef = ref(db, `messages/${currentUserId}`);
+                const snapshot = await get(messagesRef);
+                
+                if (snapshot.exists()) {
+                    const messages = snapshot.val();
+                    const updates = {};
+                    let unreadCount = 0;
+                    
+                    Object.keys(messages).forEach(key => {
+                        if (messages[key].delivered && !messages[key].read) {
+                            updates[`messages/${currentUserId}/${key}/read`] = true;
+                            unreadCount++;
+                        }
+                    });
+                    
+                    if (unreadCount === 0) {
+                        showToast('Tidak ada pesan yang perlu ditandai');
+                        return;
+                    }
+                    
+                    await update(ref(db), updates);
+                    renderCompactMessages();
+                    updateNotificationBell();
+                    showToast(`${unreadCount} pesan ditandai sudah dibaca ✓`);
+                }
+            } catch (error) {
+                console.error('Error marking all as read:', error);
+            }
+        }
+
+        async function updateNotificationBell() {
+            if (!firebaseInitialized) return;
+            
+            try {
+                const messagesRef = ref(db, `messages/${currentUserId}`);
+                const snapshot = await get(messagesRef);
+                
+                let unreadCount = 0;
+                if (snapshot.exists()) {
+                    const messages = Object.values(snapshot.val());
+                    unreadCount = messages.filter(m => m.delivered && !m.read).length;
+                }
+                
+                const bell = document.getElementById('notificationBell');
+                const badge = document.getElementById('notifBadge');
+                
+                if (unreadCount > 0) {
+                    badge.textContent = unreadCount > 99 ? '99+' : unreadCount;
+                    badge.style.display = 'flex';
+                    bell.classList.add('has-new');
+                } else {
+                    badge.style.display = 'none';
+                    bell.classList.remove('has-new');
+                }
+            } catch (error) {
+                console.error('Error updating notification bell:', error);
+            }
+        }
+
+        function checkNewMessages() {
+            updateNotificationBell();
+        }
+
+        window.sendMessage = async function() {
+            if (!firebaseInitialized) {
+                showToast('Firebase tidak tersedia! ❌');
+                return;
+            }
+
+            const recipient = document.getElementById('messageRecipient').value;
+            const content = document.getElementById('messageContent').value.trim();
+            
+            if (!recipient) {
+                showToast('Pilih penerima pesan! 📋');
+                return;
+            }
+            if (!content) {
+                showToast('Tulis pesan terlebih dahulu! ✍️');
+                return;
+            }
+            
+            if (content.length < 5) {
+                showToast('Pesan terlalu pendek! Minimal 5 karakter. 📝');
+                return;
+            }
+            
+            const messageId = 'msg_' + Date.now();
+            const sendTime = Date.now() + MESSAGE_DELAY;
+            
+            const pendingMsg = {
+                id: messageId,
+                recipient: recipient,
+                content: content,
+                createdAt: Date.now(),
+                sendAt: sendTime,
+                status: 'pending',
+                sender: 'Ibu Erna Susanti 🌏'
+            };
+            
+            try {
+                await push(ref(db, 'pendingMessages'), pendingMsg);
+                saveMessageToRecipient(recipient, pendingMsg);
+                
+                document.getElementById('messageRecipient').value = '';
+                document.getElementById('messageContent').value = '';
+                
+                updatePendingMessages();
+                showToast(`✅ Pesan akan dikirim dalam 2 menit!`);
+            } catch (error) {
+                console.error('Error sending message:', error);
+                showToast('Gagal mengirim pesan ❌');
+            }
+        }
+
+        async function saveMessageToRecipient(recipient, message) {
+            if (!firebaseInitialized) return;
+            
+            const msgData = {
+                ...message,
+                read: false,
+                delivered: false
+            };
+            
+            try {
+                if (recipient === 'all') {
+                    for (let i = 1; i <= 10; i++) {
+                        await push(ref(db, `messages/${i}`), msgData);
+                    }
+                } else {
+                    await push(ref(db, `messages/${recipient}`), msgData);
+                }
+            } catch (error) {
+                console.error('Error saving message to recipient:', error);
+            }
+        }
+
+        async function updatePendingMessages() {
+            if (!firebaseInitialized) return;
+            
+            const pendingList = document.getElementById('pendingList');
+            const section = document.getElementById('pendingMessagesSection');
+            
+            try {
+                const snapshot = await get(ref(db, 'pendingMessages'));
+                
+                if (!snapshot.exists()) {
+                    section.style.display = 'none';
+                    return;
+                }
+                
+                const pendingMessages = Object.entries(snapshot.val())
+                    .map(([key, val]) => ({ key, ...val }))
+                    .filter(msg => msg.status === 'pending');
+                
+                if (pendingMessages.length === 0) {
+                    section.style.display = 'none';
+                    return;
+                }
+                
+                section.style.display = 'block';
+                
+                pendingList.innerHTML = pendingMessages.map(msg => {
+                    const timeLeft = Math.max(0, msg.sendAt - Date.now());
+                    const minutes = Math.floor(timeLeft / 60000);
+                    const seconds = Math.floor((timeLeft % 60000) / 1000);
+                    
+                    const recipientName = msg.recipient === 'all' 
+                        ? '📢 Semua Murid' 
+                        : `${msg.recipient}. ${studentsData[msg.recipient].name} ${studentsData[msg.recipient].emoji}`;
+                    
+                    return `
+                        <div class="pending-item" id="pending-${msg.key}">
+                            <div class="pending-header">
+                                <span class="pending-recipient">To: ${recipientName}</span>
+                                <button class="cancel-btn" onclick="cancelMessage('${msg.key}')">Batal</button>
+                            </div>
+                            <div class="pending-content">${msg.content}</div>
+                            <div class="countdown-timer" id="timer-${msg.key}">
+                                ⏱️ ${minutes}:${seconds.toString().padStart(2, '0')}
+                            </div>
+                            <span class="pending-status">🔄 Sedang diproses</span>
+                        </div>
+                    `;
+                }).join('');
+            } catch (error) {
+                console.error('Error loading pending messages:', error);
+            }
+        }
+
+        window.cancelMessage = async function(messageKey) {
+            if (!firebaseInitialized) return;
+            
+            if (!confirm('Yakin ingin membatalkan pesan ini? 🚫')) return;
+            
+            try {
+                const snapshot = await get(ref(db, `pendingMessages/${messageKey}`));
+                if (snapshot.exists()) {
+                    const msg = snapshot.val();
+                    await remove(ref(db, `pendingMessages/${messageKey}`));
+                    removeMessageFromRecipient(msg.recipient, msg.id);
+                    updatePendingMessages();
+                    showToast('Pesan berhasil dibatalkan! ✅');
+                }
+            } catch (error) {
+                console.error('Error cancelling message:', error);
+                showToast('Gagal membatalkan pesan ❌');
+            }
+        }
+
+        async function removeMessageFromRecipient(recipient, messageId) {
+            if (!firebaseInitialized) return;
+            
+            try {
+                if (recipient === 'all') {
+                    for (let i = 1; i <= 10; i++) {
+                        const snapshot = await get(ref(db, `messages/${i}`));
+                        if (snapshot.exists()) {
+                            const messages = snapshot.val();
+                            const key = Object.keys(messages).find(k => messages[k].id === messageId);
+                            if (key) {
+                                await remove(ref(db, `messages/${i}/${key}`));
+                            }
+                        }
+                    }
+                } else {
+                    const snapshot = await get(ref(db, `messages/${recipient}`));
+                    if (snapshot.exists()) {
+                        const messages = snapshot.val();
+                        const key = Object.keys(messages).find(k => messages[k].id === messageId);
+                        if (key) {
+                            await remove(ref(db, `messages/${recipient}/${key}`));
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error removing message:', error);
+            }
+        }
+
+        function startMessageChecker() {
+            if (!firebaseInitialized) return;
+            
+            if (messageCheckInterval) clearInterval(messageCheckInterval);
+            
+            messageCheckInterval = setInterval(async () => {
+                try {
+                    const snapshot = await get(ref(db, 'pendingMessages'));
+                    
+                    if (snapshot.exists()) {
+                        const pendingMessages = Object.entries(snapshot.val())
+                            .map(([key, val]) => ({ key, ...val }))
+                            .filter(msg => msg.status === 'pending');
+                        
+                        pendingMessages.forEach(async msg => {
+                            const timeLeft = msg.sendAt - Date.now();
+                            
+                            const timerEl = document.getElementById(`timer-${msg.key}`);
+                            if (timerEl) {
+                                const minutes = Math.floor(Math.max(0, timeLeft) / 60000);
+                                const seconds = Math.floor((Math.max(0, timeLeft) % 60000) / 1000);
+                                timerEl.textContent = `⏱️ ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                            }
+                            
+                            if (timeLeft <= 0) {
+                                await update(ref(db, `pendingMessages/${msg.key}`), { status: 'sent' });
+                                await deliverMessage(msg);
+                                updatePendingMessages();
+                            }
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error in message checker:', error);
+                }
+            }, 1000);
+        }
+
+        async function deliverMessage(message) {
+            if (!firebaseInitialized) return;
+            
+            try {
+                if (message.recipient === 'all') {
+                    for (let i = 1; i <= 10; i++) {
+                        const snapshot = await get(ref(db, `messages/${i}`));
+                        if (snapshot.exists()) {
+                            const messages = snapshot.val();
+                            const key = Object.keys(messages).find(k => messages[k].id === message.id);
+                            if (key) {
+                                await update(ref(db, `messages/${i}/${key}`), {
+                                    delivered: true,
+                                    deliveredAt: Date.now()
+                                });
+                            }
+                        }
+                    }
+                } else {
+                    const snapshot = await get(ref(db, `messages/${message.recipient}`));
+                    if (snapshot.exists()) {
+                        const messages = snapshot.val();
+                        const key = Object.keys(messages).find(k => messages[k].id === message.id);
+                        if (key) {
+                            await update(ref(db, `messages/${message.recipient}/${key}`), {
+                                delivered: true,
+                                deliveredAt: Date.now()
+                            });
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error delivering message:', error);
+            }
+        }
+
+        async function showTeacherView() {
+            hideAllPages();
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('teacherPage').style.display = 'block';
+            document.getElementById('teacherPage').classList.add('fade-in');
+            
+            await updateTeacherView();
+            updatePendingMessages();
+        }
+
+        async function updateTeacherView() {
+            if (!firebaseInitialized) {
+                document.getElementById('studentsList').innerHTML = `
+                    <div class="error-message">
+                        <h3>⚠️ Firebase tidak tersedia</h3>
+                        <p>Periksa koneksi internet dan konfigurasi Firebase.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            if (onlineListener) onlineListener();
+            
+            const statusRef = ref(db, 'status');
+            onlineListener = onValue(statusRef, async (snapshot) => {
+                let onlineCount = 0;
+                if (snapshot.exists()) {
+                    const statuses = snapshot.val();
+                    onlineCount = Object.values(statuses).filter(s => s.online === true).length;
+                }
+                document.getElementById('onlineCount').textContent = onlineCount;
+            }, (error) => {
+                console.error('Online listener error:', error);
+            });
+            
+            const list = document.getElementById('studentsList');
+            let html = '';
+            
+            for (let i = 1; i <= 10; i++) {
+                const student = studentsData[i];
+                let journals = [];
+                let isOnline = false;
+                
+                try {
+                    const journalsRef = ref(db, `journals/${i}`);
+                    const journalsSnap = await get(journalsRef);
+                    if (journalsSnap.exists()) {
+                        journals = Object.values(journalsSnap.val());
+                    }
+                    
+                    const statusSnap = await get(ref(db, `status/${i}`));
+                    isOnline = statusSnap.exists() && statusSnap.val().online === true;
+                } catch (error) {
+                    console.warn(`Error loading student ${i}:`, error);
+                }
+                
+                const fastingDays = journals.filter(j => j.puasa === 'yes').length;
+                const percentage = Math.min(Math.round((fastingDays * PROGRESS_PER_DAY) * 100) / 100, 100);
+                const levelInfo = getLevelInfo(percentage);
+                
+                html += `
+                    <div class="student-card">
+                        <div class="student-header">
+                            <div class="student-main">
+                                <div class="student-avatar">${student.emoji}</div>
+                                <div class="student-meta">
+                                    <h3>${student.name} ${isOnline ? '🟢' : '⚪'}</h3>
+                                    <div style="font-size: 0.9rem; opacity: 0.8;">${levelInfo.name}</div>
+                                </div>
+                            </div>
+                            <div class="student-stats">
+                                <div class="student-progress-text">${percentage}%</div>
+                                <div class="student-progress-detail">${fastingDays}/30 hari</div>
+                            </div>
+                        </div>
+                        <div class="student-progress-bar">
+                            <div class="student-progress-fill" style="width: ${percentage}%;"></div>
+                        </div>
+                        <button class="view-journal-btn" onclick="viewStudentJournal(${i})">
+                            📔 Lihat Jurnal Murid
+                        </button>
+                    </div>
+                `;
+            }
+            
+            list.innerHTML = html;
+        }
+
+        window.viewStudentJournal = async function(studentId) {
+            if (!firebaseInitialized) {
+                showToast('Firebase tidak tersedia! ❌');
+                return;
+            }
+
+            showLoading(true);
+            
+            try {
+                const student = studentsData[studentId];
+                const journalsRef = ref(db, `journals/${studentId}`);
+                const snapshot = await get(journalsRef);
+                
+                let content = '';
+                if (snapshot.exists()) {
+                    const journals = Object.values(snapshot.val()).sort((a, b) => new Date(b.date) - new Date(a.date));
+                    
+                    content = journals.map(j => `
+                        <div class="journal-detail-item">
+                            <div class="journal-detail-label">📅 ${formatDate(j.date)} - ${j.puasa === 'yes' ? '✅ Puasa' : '⚠️ Tidak Puasa'}</div>
+                            <div class="journal-detail-value">
+                                <p><strong>Mood:</strong> ${moodLabels[j.mood] || '-'} | <strong>Energi:</strong> ${'⚡'.repeat(j.energy || 0)}</p>
+                                <p><strong>Sholat:</strong> ${j.sholat?.join(', ') || '-'}</p>
+                                <p><strong>Tilawah:</strong> ${j.tilawah || '-'}</p>
+                                <p><strong>Amalan:</strong> ${j.amalan?.join(', ') || '-'}</p>
+                                ${j.interactive ? `
+                                    <p><strong>Bersyukur:</strong> ${getAnswerLabel('syukur', j.interactive.syukur)}</p>
+                                    <p><strong>Menahan Puasa:</strong> ${getAnswerLabel('tahan', j.interactive.tahan)}</p>
+                                    <p><strong>Tantangan:</strong> ${getAnswerLabel('tantangan', j.interactive.tantangan)}</p>
+                                    <p><strong>Kebaikan:</strong> ${getAnswerLabel('kebaikan', j.interactive.kebaikan)}</p>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    content = '<div style="text-align: center; padding: 20px; opacity: 0.7;">Belum ada jurnal</div>';
+                }
+                
+                document.getElementById('journalDetailContent').innerHTML = `
+                    <h3 style="margin-bottom: 15px;">${student.emoji} ${student.name}</h3>
+                    <div class="journal-detail-content">${content}</div>
+                `;
+                
+                document.getElementById('journalDetailModal').style.display = 'flex';
+            } catch (error) {
+                console.error('Error loading student journal:', error);
+                showToast('Gagal memuat jurnal murid ❌');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        window.closeJournalDetail = function() {
+            document.getElementById('journalDetailModal').style.display = 'none';
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function hideAllPages() {
+            document.getElementById('lobbyPage').style.display = 'none';
+            document.getElementById('jurnalPage').style.display = 'none';
+            document.getElementById('riwayatPage').style.display = 'none';
+            document.getElementById('progressTemanPage').style.display = 'none';
+            document.getElementById('quizPage').style.display = 'none';
+            document.getElementById('teacherPage').style.display = 'none';
+        }
+
+        window.backToLobby = async function() {
+            hideAllPages();
+            if (currentUser.isTeacher) {
+                await showTeacherView();
+            } else {
+                showLobby();
+            }
+        }
+
+        window.logout = async function() {
+            if (firebaseInitialized && currentUserId && currentUserId !== 'teacher') {
+                try {
+                    await set(ref(db, `status/${currentUserId}`), {
+                        online: false,
+                        lastActive: serverTimestamp()
+                    });
+                } catch (error) {
+                    console.warn('Error setting offline status:', error);
+                }
+            }
+            
+            if (messagesListener) messagesListener();
+            if (onlineListener) onlineListener();
+            if (messageCheckInterval) clearInterval(messageCheckInterval);
+            
+            currentUser = null;
+            currentUserId = null;
+            document.getElementById('loginPage').style.display = 'flex';
+            hideAllPages();
+            clearPasscode();
+        }
+
+        function formatDate(dateString) {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
+        }
+
+        function formatDateTime(timestamp) {
+            if (!timestamp) return '-';
+            const date = new Date(timestamp);
+            return date.toLocaleString('id-ID', { 
+                weekday: 'short', 
+                day: 'numeric', 
+                month: 'short',
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+        }
+
+        function showLoading(show) {
+            const overlay = document.getElementById('loadingOverlay');
+            if (show) {
+                overlay.classList.add('show');
+            } else {
+                overlay.classList.remove('show');
+            }
+        }
+
+        // Auto update setiap 30 detik
+        setInterval(async () => {
+            if (currentUserId && !currentUser.isTeacher) {
+                await checkTodayJournal();
+                await updateProgress();
+                await updateNotificationBell();
+            } else if (currentUser && currentUser.isTeacher) {
+                await updateTeacherView();
+            }
+        }, 30000);
+
+        // Modal click outside
+        document.getElementById('deleteModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDeleteModal();
+            }
+        });
+
+        document.getElementById('journalDetailModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeJournalDetail();
+            }
+        });
+
+        // Close panel when clicking outside
+        document.addEventListener('click', function(e) {
+            const panel = document.getElementById('messagePanel');
+            const bell = document.getElementById('notificationBell');
+            
+            if (messagePanelOpen && !panel.contains(e.target) && !bell.contains(e.target)) {
+                closeMessagePanel();
+            }
+        });
+
+        // Expose showLoading to window
+        window.showLoading = showLoading;
+    </script>
+</body>
+</html>
